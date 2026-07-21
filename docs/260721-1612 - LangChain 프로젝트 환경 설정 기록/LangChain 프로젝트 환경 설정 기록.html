@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LangChain 기초 강의 환경 설정 기록</title>
+  <title>LangChain 프로젝트 환경 설정 기록</title>
   <style>
     :root {
       color-scheme: light;
@@ -174,9 +174,9 @@
   <main>
     <header class="hero">
       <p class="eyebrow">Setup record · 2026-07-21 16:12 KST</p>
-      <h1>LangChain 기초 강의<br>환경 설정 기록</h1>
+      <h1>LangChain 프로젝트<br>환경 설정 기록</h1>
       <p>
-        AI Agent가 노트북 실행과 터미널 작업을 이어서 수행할 수 있도록 강의 저장소,
+        AI Agent가 노트북 실행과 터미널 작업을 이어서 수행할 수 있도록 프로젝트 저장소,
         Python 가상환경, Jupyter 커널, Ollama 주력 모델을 준비한 결과입니다.
       </p>
       <div class="status-row">
@@ -197,18 +197,18 @@
       <table>
         <tr><th>항목</th><th>경로 또는 값</th></tr>
         <tr><td>작업공간</td><td><code>/Users/vallettamac/Documents/8100-Dev/7021-ai-projects/1004-langchain-agent-v1/langchain-agent-v1</code></td></tr>
-        <tr><td>강의 저장소</td><td><code>langchain-basic-course/</code></td></tr>
-        <tr><td>가상환경</td><td><code>langchain-basic-course/.venv/</code></td></tr>
-        <tr><td>환경 변수 파일</td><td><code>langchain-basic-course/.env</code>를 만들었고, 키 값은 비워 두었습니다.</td></tr>
-        <tr><td>Jupyter 커널</td><td><code>langchain-basic-2026</code> · Python 3.12</td></tr>
-        <tr><td>이 보고서</td><td><code>docs/260721-1612 - LangChain 기초 강의 환경 설정 기록/</code></td></tr>
+        <tr><td>프로젝트 저장소</td><td><code>langchain-agent-v1/</code></td></tr>
+        <tr><td>가상환경</td><td><code>langchain-agent-v1/.venv/</code></td></tr>
+        <tr><td>환경 변수 파일</td><td><code>langchain-agent-v1/.env</code>를 만들었고, 키 값은 비워 두었습니다.</td></tr>
+        <tr><td>Jupyter 커널</td><td><code>langchain-agent-v1</code> · Python 3.12</td></tr>
+        <tr><td>이 보고서</td><td><code>docs/260721-1612 - LangChain 프로젝트 환경 설정 기록/</code></td></tr>
       </table>
     </section>
 
     <section>
       <h2>2. 설치 항목별 이유와 필요</h2>
       <p>
-        이번 설정은 프로그램을 많이 설치하는 것이 목적이 아니라, AI Agent가 강의 노트북을 재현 가능하게 실행하고
+        이번 설정은 프로그램을 많이 설치하는 것이 목적이 아니라, AI Agent가 프로젝트 노트북을 재현 가능하게 실행하고
         Ollama를 주력으로 사용하면서 Groq을 비교할 수 있는 최소 실행 기반을 만드는 것이 목적입니다.
       </p>
       <table>
@@ -216,7 +216,7 @@
         <tr>
           <td><strong>Python 3.12.12</strong></td>
           <td><code>uv python install 3.12</code>로 설치했습니다.</td>
-          <td>강의 프로젝트가 Python 3.10 이상 3.13 미만을 요구합니다. 시스템 Python 3.14.6은 조건을 벗어나므로 사용하지 않았습니다.</td>
+          <td>프로젝트 프로젝트가 Python 3.10 이상 3.13 미만을 요구합니다. 시스템 Python 3.14.6은 조건을 벗어나므로 사용하지 않았습니다.</td>
         </tr>
         <tr>
           <td><strong>uv 0.11.29</strong></td>
@@ -225,23 +225,23 @@
         </tr>
         <tr>
           <td><strong>.venv 가상환경</strong></td>
-          <td><code>uv venv --python 3.12 .venv</code>로 강의 폴더 안에 생성했습니다.</td>
-          <td>이 강의의 LangChain과 Jupyter 패키지가 다른 프로젝트의 Python 패키지와 충돌하지 않게 분리하기 위해 필요합니다.</td>
+          <td><code>uv venv --python 3.12 .venv</code>로 프로젝트 폴더 안에 생성했습니다.</td>
+          <td>이 프로젝트의 LangChain과 Jupyter 패키지가 다른 프로젝트의 Python 패키지와 충돌하지 않게 분리하기 위해 필요합니다.</td>
         </tr>
         <tr>
-          <td><strong>강의 의존성 161개</strong></td>
+          <td><strong>프로젝트 의존성 161개</strong></td>
           <td><code>uv sync --python .venv/bin/python</code>으로 <code>pyproject.toml</code>과 <code>uv.lock</code> 기준 설치했습니다.</td>
           <td>노트북 전체에서 필요한 LangChain, LangGraph, provider 통합, RAG, PDF 처리 기능을 한 번에 사용할 수 있게 하기 위해 필요합니다.</td>
         </tr>
         <tr>
           <td><strong>Jupyter와 ipykernel</strong></td>
-          <td>의존성에 포함된 Jupyter를 설치하고 <code>langchain-basic-2026</code> 커널을 등록했습니다.</td>
+          <td>의존성에 포함된 Jupyter를 설치하고 <code>langchain-agent-v1</code> 커널을 등록했습니다.</td>
           <td>사용자가 Jupyter Lab을 직접 조작하지 않더라도 AI Agent가 <code>.ipynb</code> 셀을 순서대로 실행하고 결과를 저장하려면 노트북 실행 커널이 필요합니다.</td>
         </tr>
         <tr>
           <td><strong>LangChain 핵심 패키지</strong></td>
           <td><code>langchain 1.2.15</code>, <code>langchain-core 1.3.2</code>, <code>langchain-community 0.4.1</code> 등을 설치했습니다.</td>
-          <td>02번 이후의 LCEL, 프롬프트, 구조화 출력, Tools, Agents, RAG 실습을 실행하는 기본 프레임워크입니다.</td>
+          <td>02번 이후의 LCEL, 프롬프트, 구조화 출력, Tools, Agents, RAG 예제를 실행하는 기본 프레임워크입니다.</td>
         </tr>
         <tr>
           <td><strong>Ollama 앱과 통합</strong></td>
@@ -261,7 +261,7 @@
         <tr>
           <td><strong>Groq 통합</strong></td>
           <td><code>langchain-groq 1.1.2</code>와 Groq Python 패키지를 설치했습니다. API 키는 아직 입력하지 않았습니다.</td>
-          <td>Ollama로 먼저 실행한 같은 실습을 클라우드 모델로 다시 실행하여 응답 품질과 속도를 비교하기 위해 필요합니다. 실제 호출에는 사용자의 Groq API 키가 추가로 필요합니다.</td>
+          <td>Ollama로 먼저 실행한 같은 입력을 클라우드 모델로 다시 실행하여 응답 품질과 속도를 비교하기 위해 필요합니다. 실제 호출에는 사용자의 Groq API 키가 추가로 필요합니다.</td>
         </tr>
         <tr>
           <td><strong><code>.env</code> 환경 변수</strong></td>
@@ -272,19 +272,19 @@
       <div class="callout">
         <strong>설정의 핵심</strong><br>
         Jupyter는 사용자가 직접 코딩하기 위한 도구가 아니라 AI Agent가 노트북을 실행하기 위한 실행면으로 유지했습니다.
-        Ollama는 로컬 생성과 임베딩의 기본 경로로 두고, Groq은 같은 실습을 비교하는 보조 경로로 남겨 두었습니다.
+        Ollama는 로컬 생성과 임베딩의 기본 경로로 두고, Groq은 같은 입력을 비교하는 보조 경로로 남겨 두었습니다.
       </div>
     </section>
 
     <section>
       <h2>3. 어떤 순서로 설정했는가</h2>
       <ol>
-        <li>기존 작업공간을 확인하고, 강의 코드가 없음을 확인했습니다.</li>
-        <li>기존 프로젝트를 덮어쓰지 않도록 강의 저장소를 <code>langchain-basic-course/</code>에 clone했습니다.</li>
-        <li>강의가 요구하는 Python 범위가 <code>&gt;=3.10,&lt;3.13</code>이므로, 시스템의 Python 3.14.6은 사용하지 않았습니다.</li>
+        <li>기존 작업공간을 확인하고, 프로젝트 코드가 없음을 확인했습니다.</li>
+        <li>기존 프로젝트를 덮어쓰지 않도록 프로젝트 저장소를 <code>langchain-agent-v1/</code>에 clone했습니다.</li>
+        <li>프로젝트가 요구하는 Python 범위가 <code>&gt;=3.10,&lt;3.13</code>이므로, 시스템의 Python 3.14.6은 사용하지 않았습니다.</li>
         <li><code>uv</code>로 Python 3.12.12를 설치하고 <code>.venv</code>를 생성했습니다.</li>
-        <li><code>uv sync</code>로 강의 의존성 161개를 설치했습니다.</li>
-        <li>Jupyter 커널 <code>langchain-basic-2026</code>을 등록했습니다.</li>
+        <li><code>uv sync</code>로 프로젝트 의존성 161개를 설치했습니다.</li>
+        <li>Jupyter 커널 <code>langchain-agent-v1</code>을 등록했습니다.</li>
         <li>Homebrew Cask로 Ollama 앱을 설치하고 실행했습니다.</li>
         <li>Ollama에 <code>bge-m3</code>와 <code>gemma4:e2b</code>를 다운로드했습니다.</li>
         <li>LangChain을 통해 생성 모델과 임베딩 모델을 각각 실제 호출했습니다.</li>
@@ -292,24 +292,24 @@
       <div class="callout">
         <strong>모델 선택 기록</strong><br>
         처음에는 <code>gemma4:e4b</code>를 시도했지만 실제 다운로드 크기가 약 9.6GB였고 다운로드 중 네트워크의
-        <code>unexpected EOF</code>가 발생했습니다. 같은 대용량 다운로드를 반복하지 않고, 현재 강의 설정에 함께 안내된
+        <code>unexpected EOF</code>가 발생했습니다. 같은 대용량 다운로드를 반복하지 않고, 현재 프로젝트 설정에 함께 안내된
         <code>gemma4:e2b</code>로 전환했습니다. 실제 모델 목록에서는 약 7.2GB로 표시됩니다.
       </div>
     </section>
 
     <section>
       <h2>4. 설치와 실행에 사용한 핵심 명령</h2>
-      <pre><code>git clone https://github.com/pandas-studio/langchain-basic-course.git langchain-basic-course
-cd langchain-basic-course
+      <pre><code>git clone https://github.com/richlegendai/langchain-agent-v1.git langchain-agent-v1
+cd langchain-agent-v1
 uv python install 3.12
 uv venv --python 3.12 .venv
 uv sync --python .venv/bin/python
-uv run python -m ipykernel install --user --name=langchain-basic-2026 --display-name='LangChain Basic (Python 3.12)'
+uv run python -m ipykernel install --user --name=langchain-agent-v1 --display-name='LangChain Basic (Python 3.12)'
 brew install --cask ollama
 open -a Ollama
 ollama pull bge-m3
 ollama pull gemma4:e2b</code></pre>
-      <p class="small">나중에 AI Agent가 이어서 실행할 때는 강의 저장소에서 <code>uv run</code>을 사용하면 별도 activate 없이 같은 가상환경을 사용할 수 있습니다.</p>
+      <p class="small">나중에 AI Agent가 이어서 실행할 때는 프로젝트 저장소에서 <code>uv run</code>을 사용하면 별도 activate 없이 같은 가상환경을 사용할 수 있습니다.</p>
     </section>
 
     <section>
@@ -342,13 +342,13 @@ bge-m3:latest    100% GPU    CONTEXT 8192</code></pre>
       <h2>6. 아직 하지 않은 작업</h2>
       <ul class="checklist">
         <li class="pending">Groq API 키를 입력하지 않았습니다. 사용자가 직접 키를 준비한 뒤 설정합니다.</li>
-        <li class="pending">강의 01번부터 06번까지 전체 노트북 실행은 아직 시작하지 않았습니다.</li>
+        <li class="pending">프로젝트 01번부터 06번까지 전체 노트북 실행은 아직 시작하지 않았습니다.</li>
         <li class="pending">01번 노트북은 저장소 안내상 OpenAI SDK 직접 호출 구조이므로, Ollama 주력 경로에 맞춘 별도 확인이 필요합니다.</li>
-        <li class="pending">04번 Tools 실습의 Tavily API 키는 설정하지 않았습니다.</li>
+        <li class="pending">04번 Tools 예제의 Tavily API 키는 설정하지 않았습니다.</li>
       </ul>
       <div class="callout">
         <strong>다음 실행 원칙</strong><br>
-        02번부터 Ollama를 주력으로 먼저 실행하고, 성공한 실습은 같은 입력으로 Groq을 다시 실행하여 비교합니다.
+        02번부터 Ollama를 주력으로 먼저 실행하고, 성공한 예제는 같은 입력으로 Groq을 다시 실행하여 비교합니다.
         Jupyter Lab 화면은 사용자가 직접 조작하지 않고 AI Agent가 실행합니다.
       </div>
     </section>
@@ -356,16 +356,16 @@ bge-m3:latest    100% GPU    CONTEXT 8192</code></pre>
     <section>
       <h2>7. 바로 열어볼 수 있는 관련 파일</h2>
       <ul>
-        <li><a href="../../langchain-basic-course/README.md">강의 저장소 README</a></li>
-        <li><a href="../../langchain-basic-course/SETUP.md">강의 SETUP.md</a></li>
-        <li><a href="../../langchain-basic-course/pyproject.toml">프로젝트 의존성 설정</a></li>
-        <li><a href="../../langchain-basic-course/.env.example">환경 변수 예시</a></li>
-        <li><a href="../../docs/260721-1555%20-%20LangChain%20%EA%B8%B0%EC%B4%88%20%EA%B0%95%EC%9D%98%20%EC%8B%A4%ED%96%89%20%EA%B3%84%ED%9A%8D/LangChain%20%EA%B8%B0%EC%B4%88%20%EA%B0%95%EC%9D%98%20%EC%8B%A4%ED%96%89%20%EA%B3%84%ED%9A%8D.md">앞서 작성한 실행 계획 문서</a></li>
+        <li><a href="../../README.md">프로젝트 저장소 README</a></li>
+        <li><a href="../../SETUP.md">프로젝트 SETUP.md</a></li>
+        <li><a href="../../pyproject.toml">프로젝트 의존성 설정</a></li>
+        <li><a href="../../.env.example">환경 변수 예시</a></li>
+        <li><a href="../../docs/260721-1555%20-%20LangChain%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%8B%A4%ED%96%89%20%EA%B3%84%ED%9A%8D/LangChain%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%8B%A4%ED%96%89%20%EA%B3%84%ED%9A%8D.md">앞서 작성한 실행 계획 문서</a></li>
       </ul>
     </section>
 
     <footer>
-      출처: <a href="https://github.com/pandas-studio/langchain-basic-course">pandas-studio/langchain-basic-course</a> ·
+      출처: <a href="https://github.com/richlegendai/langchain-agent-v1">richlegendai/langchain-agent-v1</a> ·
       <a href="https://docs.ollama.com/macos">Ollama macOS 문서</a> ·
       민감한 API 키 값은 이 문서에 기록하지 않았습니다.
     </footer>

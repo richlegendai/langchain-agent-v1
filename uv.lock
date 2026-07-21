@@ -1251,7 +1251,7 @@ wheels = [
 ]
 
 [[package]]
-name = "langchain-basic-course"
+name = "langchain-agent-v1"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

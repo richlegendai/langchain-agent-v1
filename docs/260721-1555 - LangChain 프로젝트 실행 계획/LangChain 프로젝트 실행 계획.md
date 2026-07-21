@@ -1,8 +1,8 @@
-# LangChain 기초 강의 실행 계획
+# LangChain 프로젝트 실행 계획
 
 ## 1. 문서 목적
 
-이 문서는 [pandas-studio/langchain-basic-course](https://github.com/pandas-studio/langchain-basic-course)의 입문 트랙을 AI Agent 중심으로 실행하기 위한 운영 기준입니다.
+이 문서는 [richlegendai/langchain-agent-v1](https://github.com/richlegendai/langchain-agent-v1)의 노트북 구성을 AI Agent 중심으로 실행하기 위한 운영 기준입니다.
 
 사용자가 각 셀을 직접 코딩하는 방식이 아니라 AI Agent가 다음 작업을 순서대로 수행하는 것을 전제로 합니다.
 
@@ -10,7 +10,7 @@
 - Python 가상환경과 의존성 설치
 - Jupyter 노트북 실행
 - Ollama 모델 관리
-- 강의별 오류 분석과 수정
+- 프로젝트별 오류 분석과 수정
 - Ollama와 Groq 실행 결과 비교
 
 ## 2. 확정 운영 방향
@@ -20,7 +20,7 @@
 | 역할 | 기본 선택 | 사용 목적 |
 | --- | --- | --- |
 | 주력 LLM | Ollama | 인터넷 연결과 API 비용에 덜 의존하는 기본 실행 경로 |
-| 보조 LLM | Groq | 같은 실습을 다시 실행하여 속도와 결과를 비교하는 경로 |
+| 보조 LLM | Groq | 같은 입력을 다시 실행하여 속도와 결과를 비교하는 경로 |
 | 임베딩 모델 | Ollama `bge-m3` | 03번과 06번 노트북의 예시 선택자와 RAG 임베딩 |
 | 로컬 생성 모델 | Ollama `gemma4:e4b` | Ollama를 생성형 LLM으로 사용하는 기본 후보 |
 
@@ -40,7 +40,7 @@ Jupyter와 `ipykernel`은 프로젝트 실행 환경에 유지합니다. 사용�
 
 ### 2.3 Groq의 사용 범위
 
-이 강의 저장소가 기본 지원하는 클라우드 옵션은 Groq입니다. Groq API 키는 `.env`의 `GROQ_API_KEY`에 설정하고, 키 값 자체는 문서나 Git에 기록하지 않습니다.
+이 프로젝트 저장소가 기본 지원하는 클라우드 옵션은 Groq입니다. Groq API 키는 `.env`의 `GROQ_API_KEY`에 설정하고, 키 값 자체는 문서나 Git에 기록하지 않습니다.
 
 Groq은 다음 상황에서 사용합니다.
 
@@ -90,7 +90,7 @@ GROQ_API_KEY=
 
 API 키, 토큰, 개인 정보는 문서와 Git diff에 출력하지 않습니다. `.env` 파일은 커밋하지 않습니다.
 
-## 4. 강의 실행 순서
+## 4. 프로젝트 실행 순서
 
 ### 단계 1. 프로젝트와 실행 환경 확인
 
@@ -125,11 +125,11 @@ AI Agent가 `bge-m3`를 준비하고, 컴퓨터 사양에 따라 `gemma4:e4b` �
 - 선택한 Ollama 생성 모델의 간단한 응답이 성공합니다.
 - 모델 실행 후 컴퓨터가 정상적으로 반응합니다.
 
-### 단계 3. 강의 노트북을 Ollama로 실행
+### 단계 3. 프로젝트 노트북을 Ollama로 실행
 
 **상태**: 대기
 
-강의 노트북은 Ollama를 주력으로 사용하여 순서대로 실행합니다.
+프로젝트 노트북은 Ollama를 주력으로 사용하여 순서대로 실행합니다.
 
 - 01번: OpenAI SDK 직접 호출 구조를 확인한 뒤 Ollama 주력 원칙에 맞는 실행 경로를 결정합니다.
 - 02번: LangChain Core와 LCEL을 Ollama로 실행합니다.
@@ -148,7 +148,7 @@ AI Agent가 `bge-m3`를 준비하고, 컴퓨터 사양에 따라 `gemma4:e4b` �
 - 사용한 Ollama 모델
 - 다음 단계로 넘어가기 위한 조건
 
-### 단계 4. 같은 실습을 Groq으로 비교 실행
+### 단계 4. 같은 입력을 Groq으로 비교 실행
 
 **상태**: 대기
 
@@ -170,11 +170,11 @@ Ollama 실행이 완료된 노트북부터 Groq으로 다시 실행합니다. �
 - Tools와 Agents 호출 안정성
 - 로컬 컴퓨터 자원 사용량
 
-### 단계 5. 결과 정리와 다음 학습 결정
+### 단계 5. 결과 정리와 다음 실행 결정
 
 **상태**: 대기
 
-AI Agent가 강의별 Ollama와 Groq 결과를 정리합니다. 비교 결과만으로 모델 우열을 일반화하지 않고, 해당 노트북과 입력에서 관찰된 차이로 기록합니다.
+AI Agent가 프로젝트별 Ollama와 Groq 결과를 정리합니다. 비교 결과만으로 모델 우열을 일반화하지 않고, 해당 노트북과 입력에서 관찰된 차이로 기록합니다.
 
 최종 정리에는 다음 내용을 포함합니다.
 
@@ -183,7 +183,7 @@ AI Agent가 강의별 Ollama와 Groq 결과를 정리합니다. 비교 결과만
 - Ollama 모델별 속도와 자원 부담
 - Groq API 사용 시 필요한 설정
 - 오류가 발생한 노트북과 재현 조건
-- 다음 학습 단계에서 사용할 기본 모델
+- 다음 실행 단계에서 사용할 기본 모델
 
 ## 5. 운영 및 자원 관리
 
@@ -198,23 +198,23 @@ ollama stop gemma4:e4b
 
 - 다른 애플리케이션의 반응이 느려집니다.
 - 메모리 부족 또는 시스템 스왑이 관찰됩니다.
-- 응답 시간이 학습 흐름을 방해합니다.
+- 응답 시간이 작업 흐름을 방해합니다.
 - `bge-m3`와 생성 모델을 동시에 유지하기 어렵습니다.
 
 ## 6. 성공 기준
 
 - Jupyter Lab 화면을 직접 조작하지 않고 AI Agent가 노트북을 실행합니다.
-- Ollama가 모든 가능한 강의 실습의 기본 LLM으로 먼저 실행됩니다.
-- `bge-m3` 임베딩을 사용하는 03번과 06번 실습이 실행됩니다.
-- Groq이 같은 실습의 보조 비교 경로로 실행됩니다.
+- Ollama가 모든 가능한 노트북 실행의 기본 LLM으로 먼저 실행됩니다.
+- `bge-m3` 임베딩을 사용하는 03번과 06번 예제가 실행됩니다.
+- Groq이 같은 입력의 보조 비교 경로로 실행됩니다.
 - API 키가 문서, 로그, Git diff에 노출되지 않습니다.
 - 실패한 단계는 숨기지 않고 오류 문자열과 다음 조치를 기록합니다.
 - Ollama와 Groq의 비교 결과가 같은 입력 기준으로 정리됩니다.
 
 ## 7. 참고 자료
 
-- [강의 저장소](https://github.com/pandas-studio/langchain-basic-course)
-- [강의 환경 설정](https://github.com/pandas-studio/langchain-basic-course/blob/main/SETUP.md)
+- [프로젝트 저장소](https://github.com/richlegendai/langchain-agent-v1)
+- [프로젝트 환경 설정](https://github.com/richlegendai/langchain-agent-v1/blob/main/SETUP.md)
 - [Ollama macOS 문서](https://docs.ollama.com/macos)
 - [Ollama FAQ](https://docs.ollama.com/faq)
 - [Groq API 콘솔](https://console.groq.com/keys)

@@ -1,130 +1,108 @@
-# 🤖 생성형 AI / LLM 입문 with LangChain v1.0
+# LangChain Agent v1
 
-> **인프런 · 유튜브 판다스 스튜디오 무료 강의 자료**
->
-> 카드 등록 없이 무료로 시작하는 생성형 AI · LangChain v1.0 입문 트랙 (6강, 약 2~3시간)
+Python과 Jupyter 기반으로 LLM 애플리케이션 패턴을 확인하는 프로젝트입니다. 직접 SDK 호출부터 LangChain Core, LCEL, 구조화 출력, Tools, Agents, RAG까지 하나의 저장소에서 실행할 수 있습니다.
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](./LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![LangChain](https://img.shields.io/badge/LangChain-v1.0%2B-green.svg)](https://python.langchain.com/)
 
----
+## 프로젝트 구성
 
-## 📚 이 강의는 무엇인가요?
+| 번호 | 파일 | 주요 내용 |
+| --- | --- | --- |
+| 01 | `[LLM]_01_GenAI_Intro.ipynb` | OpenAI SDK 기반 LLM 호출, 멀티턴 대화, JSON 출력 |
+| 02 | `[LLM]_02_LangChain_Core_LCEL.ipynb` | LangChain Core, LCEL, Runnable, Streaming, Batch |
+| 03 | `[LLM]_03_Prompt_Structured_Output.ipynb` | 프롬프트 설계, 예시 선택, Pydantic 기반 구조화 출력 |
+| 04 | `[LLM]_04_Tools.ipynb` | `@tool`, `bind_tools`, ReAct 루프, Tavily 검색 |
+| 05 | `[LLM]_05_Agents.ipynb` | `create_agent`, 상태 관리, 메모리, 구조화 출력 |
+| 06 | `[LLM]_06_RAG_Data_Pipeline.ipynb` | 문서 분할, 임베딩, FAISS, LCEL 기반 RAG |
 
-**"카드 등록·결제 부담 없이 LLM 첫 실습을 끝내고 싶다"** 는 분을 위한 입문 트랙입니다.
+## 요구사항
 
-- 🎯 **대상**: 파이썬 기초 문법은 알지만 LLM·LangChain은 처음인 분
-- ⏱ **분량**: 6개 노트북, 약 2~3시간 + 한국어 실습 시나리오
-- 🆓 **비용**: **0원** (Google Gemini 2.5 Flash-Lite 무료 한도 또는 로컬 Ollama로 진행)
+- Python 3.10 이상 3.13 미만
+- `uv` 또는 Python 가상환경과 `pip`
+- Jupyter와 `ipykernel`
+- 사용하는 모델 제공자의 API 키
+- 03번과 06번에서 로컬 임베딩을 사용하려면 Ollama와 `bge-m3`
+- 04번의 웹 검색 예제를 실행하려면 Tavily API 키
 
----
-
-## 📖 커리큘럼 (01~06)
-
-> 📓 **본편 6강 노트북·영상이 모두 공개되었습니다 (2026-04-28).**
-
-| # | 노트북 | 핵심 개념 | 🎬 영상 |
-|---|--------|----------|--------|
-| 01 | **GenAI 개론** | "다음 토큰 예측" 자판기 비유 · OpenAI SDK 첫 호출 · `temperature` · JSON 출력 | ✅ 이론편 · ✅ 실습편 |
-| 02 | **LangChain Core + LCEL** | `init_chat_model` · LCEL 파이프 (`\|`) · Runnable 4종 · Streaming · Batch | ✅ 이론편 · ✅ 실습편 |
-| 03 | **Prompt + Structured Output** | Zero/One/Few-shot 도화지 비유 · Pydantic 엑셀 양식 비유 · Example Selector | ✅ 이론편 · ✅ 실습편 |
-| 04 | **Tools** | `@tool` 데코레이터 · `bind_tools` · 수동 ReAct 루프 · Tavily 웹검색 + 폴백 | ✅ 이론편 · ✅ 실습편 |
-| 05 | **Agents** | `create_agent` 한 줄 · ReAct 다이어그램 · MemorySaver · 구조화 출력 · `@dynamic_prompt` | ✅ 이론편 · ✅ 실습편 |
-| 06 | **RAG Data Pipeline** | 임베딩 = 의미 좌표계 · FAISS · 청크 시각화 · LCEL 한 줄 RAG | ✅ 이론편 · ✅ 실습편 |
-
----
-
-## 🚀 빠른 시작
-
-### 1️⃣ 클론 + 가상환경
+## 시작하기
 
 ```bash
-git clone https://github.com/pandas-studio/langchain-basic-course.git
-cd langchain-basic-course
-uv sync   # 또는: python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
-```
+git clone https://github.com/richlegendai/langchain-agent-v1.git
+cd langchain-agent-v1
 
-### 2️⃣ API 키 1개 발급 (무료 옵션 추천)
-
-```bash
+uv sync
 cp .env.example .env
-# .env 파일을 열어 키 한 개만 채우세요
+uv run jupyter lab
 ```
 
-| 옵션 | 비용 | 발급 링크 | 한국어 |
-|------|------|----------|--------|
-| ✅ Google Gemini 2.5 Flash-Lite | **무료** (카드 X) | <https://aistudio.google.com/apikey> | ⭐⭐⭐⭐⭐ |
-| ✅ Groq Qwen3 32B | **무료** | <https://console.groq.com/keys> | ⭐⭐⭐⭐⭐ |
-| ✅ Ollama Gemma 4 E4B | **완전 무료** (로컬) | <https://ollama.com> | ⭐⭐⭐⭐ |
-| ⚙️ OpenAI gpt-4.1-mini | 유료 | <https://platform.openai.com/api-keys> | ⭐⭐⭐⭐⭐ |
-
-> 자세한 환경 설정은 [`SETUP.md`](./SETUP.md) 를 참고하세요 (10~20분 소요).
-
-### 3️⃣ Jupyter 시작
+`uv`를 사용하지 않는 경우에는 다음 순서로 실행합니다.
 
 ```bash
-uv run jupyter lab
-# → 01번 노트북 열기
+python3 -m venv .venv
+source .venv/bin/activate     # macOS / Linux
+# .venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+jupyter lab
 ```
 
----
+환경 변수와 모델 준비 방법은 [`SETUP.md`](./SETUP.md)에 정리되어 있습니다.
 
-## 🛠 기술 스택 (2026-04 기준)
+## 환경 변수
 
-- **Python** 3.10+ (권장 3.12)
-- **LangChain v1.0+** — `langchain.chat_models`, `langchain.messages`, `langchain.tools`
-- **LangGraph 1.0+** — 05번 노트북부터 `create_agent`
-- **무료 LLM**: `gemini-2.5-flash-lite`, `qwen/qwen3-32b`, `gemma4:e4b`
-- **임베딩**: `bge-m3` (Ollama 로컬, BAAI 다국어, 1024차원, API 키 불필요)
-- **VectorDB**: FAISS
-- **웹검색**: Tavily (선택)
+`.env.example`을 `.env`로 복사한 뒤, 실행할 노트북에 필요한 값만 설정합니다.
 
----
+| 변수 | 사용처 |
+| --- | --- |
+| `OPENAI_API_KEY` | OpenAI SDK 및 OpenAI 모델 |
+| `GOOGLE_API_KEY` | Google Generative AI 모델 |
+| `GROQ_API_KEY` | Groq 모델 |
+| `TAVILY_API_KEY` | 웹 검색 도구 |
+| `LANGSMITH_API_KEY` | 선택적 실행 추적 |
 
-## 📺 강의 영상 채널
+Ollama는 로컬 서비스로 실행되므로 별도의 API 키가 필요하지 않습니다.
 
-본 저장소의 강의 영상은 **인프런** 과 **유튜브 판다스 스튜디오** 채널에 게시됩니다. 강의 1개당 **이론편(슬라이드) + 실습편(노트북 시연) 2편** 으로 구성되어 있으며 (총 12편 — 본편 6×2), 본 노트북은 **실습편 영상에서 다루는 자료** 입니다.
+## 기술 구성
 
-| 강의 | 이론편 | 실습편 |
-|------|--------|--------|
-| 01 생성형 AI 개론 | ✅ 공개 | ✅ 공개 |
-| 02~06 본편 | ✅ 공개 | ✅ 공개 |
+- Python 3.10 이상 3.13 미만
+- LangChain 1.x
+- LangGraph 1.x
+- Jupyter Notebook
+- Pydantic
+- FAISS
+- Ollama 임베딩 모델 `bge-m3`
+- Tavily 검색 도구
 
-- 🎓 **인프런 강의** : <https://inf.run/avW8v>
-- 📺 **유튜브 재생목록** : <https://www.youtube.com/playlist?list=PL5bzmUGXvZNR9EXdqjCuETGfrKs_hdk7K>
+주요 의존성은 [`pyproject.toml`](./pyproject.toml)과 [`requirements.txt`](./requirements.txt)에서 관리합니다.
 
-> 🆕 **본편 6강 노트북·영상이 모두 공개되었습니다 (2026-04-28).**
+## 실행 순서
 
----
+노트북은 다음 순서로 확인할 수 있습니다.
 
-## 📜 라이선스
+1. SDK 직접 호출과 메시지 구조 확인
+2. LangChain Core와 LCEL 조합 확인
+3. 프롬프트와 구조화 출력 구성
+4. Tools와 외부 검색 연결
+5. Agents와 상태 관리 구성
+6. 문서 검색과 RAG 파이프라인 구성
 
-본 저장소는 **CC BY-NC-ND 4.0** 라이선스를 따릅니다.
+각 노트북은 독립적으로 실행할 수 있지만, 앞 번호의 개념을 알고 있으면 뒤의 구조를 이해하기 쉽습니다.
 
-- ✅ **개인 학습**: 자유롭게 clone·실행·수정 가능 (단, 수정본 재배포는 금지)
-- ❌ **강의·기업 교육 사용**: 사전 서면 동의 필수
-- ❌ **상업 목적 활용**: 금지
+## 개발 점검
 
-자세한 내용은 [`LICENSE`](./LICENSE) 와 한국어 안내 [`NOTICE.md`](./NOTICE.md) 를 반드시 확인해주세요.
+의존성을 설치한 뒤 Ruff로 Python 파일과 노트북 관련 코드를 점검할 수 있습니다.
 
-> ⚠️ **본 저장소를 clone 하거나 다운로드 하는 행위는 위 라이선스 조건에 동의함을 의미합니다.**
+```bash
+uv run ruff check .
+```
 
----
+API 키와 로컬 설정 파일은 커밋하지 않습니다. `.env`는 `.gitignore`에 포함되어 있습니다.
 
-## 🐛 이슈 / 질문
+## 라이선스
 
-- **오타·코드 오류**: [GitHub Issues](https://github.com/pandas-studio/langchain-basic-course/issues) (Label: `bug`)
-- **학습 질문**: [인프런 강의 Q&A 게시판](https://inf.run/avW8v)만 사용해주세요** (GitHub 저장소는 코드 이슈 전용)
-- **라이선스 문의**: [GitHub Issues](https://github.com/pandas-studio/langchain-basic-course/issues) (Label: `license-inquiry`)
+이 저장소는 CC BY-NC-ND 4.0 라이선스를 따릅니다. 사용 조건은 [`LICENSE`](./LICENSE)와 [`NOTICE.md`](./NOTICE.md)를 확인하세요.
 
----
+## 이슈
 
-## 🙏 Acknowledgements
-
-- LangChain · LangGraph 팀의 v1.0 단순화에 감사드립니다
-- Google AI Studio · Groq · Ollama 의 무료 한도 정책 덕분에 입문자도 카드 없이 시작할 수 있습니다
-
----
-
-**Made with ❤️ by 판다스 스튜디오 (Pandas Studio)** · 2026
+코드 오류나 실행 문제는 GitHub Issues에 재현 방법, 사용한 Python 버전, 실행한 노트북 번호와 함께 남겨주세요.
