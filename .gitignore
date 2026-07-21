@@ -62,3 +62,25 @@ next-env.d.ts
 .playwright-mcp/
 
 .serena/
+
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.python-version
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+.uv-cache/
+
+# IDE and OS
+.idea/
+Thumbs.db
+
+# Course-generated data
+data/raw/
+faiss_index/
+_internal/
+slides/
+advanced/
