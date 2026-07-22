@@ -72,7 +72,7 @@ Ollama를 설치하면 모델을 로컬에서 실행할 수 있습니다.
 2. 필요한 모델을 내려받습니다.
 
 ```bash
-ollama pull gemma4:e4b
+ollama pull gemma4:e2b
 ollama pull bge-m3
 ```
 
@@ -123,7 +123,7 @@ jupyter lab
 
 ### `OPENAI_API_KEY`가 설정되지 않았습니다
 
-01번 노트북에서 OpenAI SDK 경로를 사용할 때 필요한 값입니다. `.env`에 키를 설정하거나 노트북에 안내된 호환 엔드포인트 설정을 확인합니다.
+01번 노트북은 OpenAI SDK 인터페이스로 Gemini, OpenAI 또는 Ollama를 호출합니다. Ollama를 사용할 때는 API 키 없이 Ollama가 실행 중인지 확인하고 `gemma4:e2b` 모델을 사용합니다.
 
 ### `ModuleNotFoundError: No module named 'dotenv'`
 
@@ -141,7 +141,7 @@ pip install -r requirements.txt
 
 ```bash
 ollama list
-ollama pull gemma4:e4b
+ollama pull gemma4:e2b
 ollama pull bge-m3
 ```
 

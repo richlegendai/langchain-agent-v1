@@ -22,7 +22,7 @@
 | 주력 LLM | Ollama | 인터넷 연결과 API 비용에 덜 의존하는 기본 실행 경로 |
 | 보조 LLM | Groq | 같은 입력을 다시 실행하여 속도와 결과를 비교하는 경로 |
 | 임베딩 모델 | Ollama `bge-m3` | 03번과 06번 노트북의 예시 선택자와 RAG 임베딩 |
-| 로컬 생성 모델 | Ollama `gemma4:e4b` | Ollama를 생성형 LLM으로 사용하는 기본 후보 |
+| 로컬 생성 모델 | Ollama `gemma4:e2b` | Ollama를 생성형 LLM으로 사용하는 기본 후보 |
 
 Ollama와 Groq을 동시에 기본 경로로 섞지 않습니다. 각 노트북은 먼저 Ollama로 완료한 뒤, 같은 입력과 구조를 유지하여 Groq으로 재실행합니다.
 
@@ -69,12 +69,12 @@ Groq은 다음 상황에서 사용합니다.
 
 ```bash
 ollama pull bge-m3
-ollama pull gemma4:e4b
+ollama pull gemma4:e2b
 ```
 
 모델 크기와 실행 가능 여부는 컴퓨터 메모리와 현재 실행 중인 애플리케이션을 함께 고려합니다.
 
-- RAM 16GB 이상: `gemma4:e4b`와 `bge-m3`를 우선 시도합니다.
+- RAM 16GB 이상: `gemma4:e2b`와 `bge-m3`를 우선 시도합니다.
 - RAM이 부족하거나 응답이 지나치게 느림: 더 작은 Ollama 생성 모델을 검토합니다.
 - 로컬 생성 모델 실행이 불안정함: Ollama의 `bge-m3`만 유지하고 생성 LLM은 Groq으로 비교 실행합니다.
 
@@ -117,7 +117,7 @@ AI Agent가 다음 항목을 확인합니다.
 
 **상태**: 대기
 
-AI Agent가 `bge-m3`를 준비하고, 컴퓨터 사양에 따라 `gemma4:e4b` 또는 더 작은 생성 모델을 준비합니다.
+AI Agent가 `bge-m3`를 준비하고, 컴퓨터 사양에 따라 `gemma4:e2b` 또는 더 작은 생성 모델을 준비합니다.
 
 **완료 기준**:
 
@@ -131,14 +131,14 @@ AI Agent가 `bge-m3`를 준비하고, 컴퓨터 사양에 따라 `gemma4:e4b` �
 
 프로젝트 노트북은 Ollama를 주력으로 사용하여 순서대로 실행합니다.
 
-- 01번: OpenAI SDK 직접 호출 구조를 확인한 뒤 Ollama 주력 원칙에 맞는 실행 경로를 결정합니다.
+- 01번: OpenAI SDK 인터페이스로 Ollama `gemma4:e2b`를 호출합니다.
 - 02번: LangChain Core와 LCEL을 Ollama로 실행합니다.
 - 03번: 구조화 출력과 예시 선택자를 Ollama 및 `bge-m3`로 실행합니다.
 - 04번: Tools 실습을 Ollama로 실행하고, 웹 검색 키가 필요한 부분을 별도로 표시합니다.
 - 05번: Agents 실습을 Ollama로 실행합니다.
 - 06번: `bge-m3`, FAISS, Ollama를 이용해 RAG 파이프라인을 실행합니다.
 
-01번 노트북이 OpenAI SDK를 전제로 하여 Ollama로 바로 실행되지 않는 경우, AI Agent는 임의로 OpenAI 키를 요구하지 않습니다. 해당 노트북의 실행 구조를 확인하고 Ollama용 최소 변경을 제안하거나 02번부터 진행합니다.
+01번 노트북은 Ollama의 OpenAI 호환 엔드포인트를 사용하므로 별도 클라우드 API 키 없이 실행할 수 있습니다. Ollama 서비스와 `gemma4:e2b` 모델이 준비되지 않은 경우에만 해당 상태를 오류로 기록합니다.
 
 각 단계가 끝날 때 AI Agent는 다음 결과를 기록합니다.
 
@@ -191,7 +191,7 @@ Ollama 모델은 사용 중 RAM과 CPU 또는 GPU를 사용합니다. AI Agent�
 
 ```bash
 ollama ps
-ollama stop gemma4:e4b
+ollama stop gemma4:e2b
 ```
 
 다음 상황에서는 로컬 생성 모델을 중지하거나 작은 모델로 전환합니다.
@@ -218,4 +218,3 @@ ollama stop gemma4:e4b
 - [Ollama macOS 문서](https://docs.ollama.com/macos)
 - [Ollama FAQ](https://docs.ollama.com/faq)
 - [Groq API 콘솔](https://console.groq.com/keys)
-
