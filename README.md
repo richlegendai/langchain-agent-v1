@@ -5,6 +5,7 @@
 ### LangChain
 - LangChain (Core)
 - RAG
+- LLM Agentic
 
 ### 플랫폼
 - Rust Tauri
