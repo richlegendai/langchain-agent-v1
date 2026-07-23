@@ -1,0 +1,50 @@
+{
+  "name": "reviewflow-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:bundle-sidecar": "node --test scripts/verify-bundled-sidecar.node-test.mjs",
+    "typecheck": "tsc -b --pretty false",
+    "lint": "biome check .",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:sidecar-build && pnpm build",
+    "test:sidecar-build": "node --test scripts/build-sidecar.node-test.mjs",
+    "sidecar:build": "node scripts/build-sidecar.mjs",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-dialog": "^2.7.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.25.0",
+    "papaparse": "^5.5.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.5",
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/papaparse": "^5.5.2",
+    "@tauri-apps/cli": "^2.11.4",
+    "@vitejs/plugin-react": "^6.0.4",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
+  },
+  "packageManager": "pnpm@11.13.1"
+}

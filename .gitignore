@@ -23,6 +23,10 @@
 
 # production
 /build
+/dist
+/src-tauri/target
+/src-tauri/binaries/*
+!/src-tauri/binaries/.gitkeep
 
 # misc
 .DS_Store

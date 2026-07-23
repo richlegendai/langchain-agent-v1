@@ -1,10 +1,11 @@
 [project]
 name = "langchain-agent-v1"
 version = "0.1.0"
-description = "LangChain과 LLM 애플리케이션 패턴을 확인하는 Jupyter 프로젝트"
+description = "LangChain 기반 상품 후기 분석 Tauri 데스크톱 앱과 학습 자료"
 readme = "README.md"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.12,<3.13"
 dependencies = [
+    "anyio>=4.0.0",
     "python-dotenv>=1.0.0",
     "ipykernel>=6.29.0",
     "jupyter>=1.0.0",
@@ -30,5 +31,30 @@ package = false
 
 [dependency-groups]
 dev = [
+    "basedpyright>=1.31.0",
+    "pyinstaller>=6.15.0",
+    "pytest>=9.0.0",
+    "pytest-cov>=7.0.0",
     "ruff>=0.5.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-config", "--strict-markers"]
+pythonpath = ["."]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.12"
+include = ["review_analyzer", "tests/review_analyzer"]
+exclude = ["**/__pycache__", "**/.venv", "**/build", "**/dist"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]

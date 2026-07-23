@@ -1,0 +1,6 @@
+minimumReleaseAge: 1440
+trustPolicy: no-downgrade
+minimumReleaseAgeExclude:
+  - '@vitejs/plugin-react@6.0.4'
+  - react-dom@19.2.8
+  - react@19.2.8

@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+  color: #18201d;
+  background: #f5f4f0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --canvas: #f5f4f0;
+  --surface: #ffffff;
+  --surface-muted: #f8f8f6;
+  --text: #18201d;
+  --text-muted: #5e6863;
+  --border: #d9ddd9;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --danger: #b42318;
+  --warning: #9a6700;
+  --success: #26734d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  background: var(--canvas);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select,
+input[type="checkbox"],
+input[type="file"] {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  color: white;
+  background: var(--accent);
+}
+
+.field-control {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #d6d3d1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #292524;
+  background: #ffffff;
+  outline: none;
+}
+
+.field-control::placeholder {
+  color: #a8a29e;
+}
+
+.field-control:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgb(15 118 110 / 18%);
+}
