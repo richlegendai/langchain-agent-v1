@@ -225,18 +225,6 @@ CSV 내보내기는 `=`, `+`, `-`, `@`, 탭, 캐리지 리턴으로 시작하는
 - [디자인 기준](./DESIGN.md)
 - [환경 설정](./SETUP.md)
 
-## 기존 LangChain 학습 자료
-
-기존 노트북과 학습 코드는 삭제하지 않고 함께 유지합니다.
-
-- `[LLM]_01_GenAI_Intro.ipynb`
-- `[LLM]_02_LangChain_Core_LCEL.ipynb`
-- `[LLM]_03_Prompt_Structured_Output.ipynb`
-- `[LLM]_04_Tools.ipynb`
-- `[LLM]_05_Agents.ipynb`
-- `[LLM]_06_RAG_Data_Pipeline.ipynb`
-- `project/02_lcel.py`
-
 ## 현재 제외 범위
 
 - 쇼핑몰 후기 자동 수집
