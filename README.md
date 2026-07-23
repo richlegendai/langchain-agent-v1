@@ -1,5 +1,21 @@
 # ReviewFlow Desktop
 
+## 주요 스택
+
+### LangChain
+- LangChain (Core)
+- RAG
+
+### 플랫폼
+- Rust Tauri
+- Node.js
+- Python
+
+### 모델 및 API
+- OLLAMA (e2b, e4b)
+- OpenAI API
+- Claude API
+
 여러 상품 후기를 동시에 분석하고 고객 답변 후보를 만드는 Tauri 데스크톱 앱입니다. 첫 화면은 프로그램 런처이며, 앞으로 같은 앱에 다른 AI 업무 프로그램을 계속 추가할 수 있습니다.
 
 첫 번째 프로그램인 상품 후기 분석기는 다음 작업을 한 흐름으로 처리합니다.
