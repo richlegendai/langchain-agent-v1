@@ -17,6 +17,12 @@
 - OpenAI API
 - Claude API
 
+## 화면 미리보기
+
+![메인 화면](docs/screenshots/reviewflow-main.png)
+
+![상품 후기 분석 및 LLM 기반 자동 답변 생성](docs/screenshots/reviewflow-review-analyzer-llm-response.png)
+
 여러 상품 후기를 동시에 분석하고 고객 답변 후보를 만드는 Tauri 데스크톱 앱입니다. 첫 화면은 프로그램 런처이며, 앞으로 같은 앱에 다른 AI 업무 프로그램을 계속 추가할 수 있습니다.
 
 첫 번째 프로그램인 상품 후기 분석기는 다음 작업을 한 흐름으로 처리합니다.
