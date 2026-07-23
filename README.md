@@ -5,15 +5,24 @@
 ### LangChain
 - LangChain (Core)
 - RAG
-- LLM Agentic
+- RAG Batch
+- Chroma Retriever
+- LCEL
 
-### 플랫폼
+### 앱 및 API
 - Rust Tauri
-- Node.js
+- FastAPI
 - Python
+- Node.js
+
+### 데이터 및 인프라
+- PostgreSQL
+- Chroma Server
+- Docker Compose
+- Caddy
 
 ### 모델 및 API
-- OLLAMA (e2b, e4b)
+- OLLAMA (bge-m3, gemma4:e2b)
 - OpenAI API
 - Claude API
 
@@ -22,6 +31,21 @@
 ![메인 화면](docs/screenshots/reviewflow-main.png)
 
 ![상품 후기 분석 및 LLM 기반 자동 답변 생성](docs/screenshots/reviewflow-review-analyzer-llm-response.png)
+
+## 사내 지식 검색 MVP
+
+한 회사의 Jira, Confluence, Slack과 Google Sheets 자료를 하루 1~2회 배치로 수집하고, Tauri에서 출처가 포함된 답변을 확인하는 서버형 RAG 프로그램을 추가할 계획입니다.
+
+```text
+Tauri → Caddy → FastAPI → LangChain
+                         ├─ PostgreSQL
+                         ├─ Chroma Server
+                         └─ Ollama (bge-m3, gemma4:e2b)
+
+서버 cron → RAG Batch Worker → 업무 자료 수집 및 벡터화
+```
+
+사내 지식 검색은 기존 상품 후기 분석과 데이터, 서버 API와 실행 프로세스를 공유하지 않습니다.
 
 여러 상품 후기를 동시에 분석하고 고객 답변 후보를 만드는 Tauri 데스크톱 앱입니다. 첫 화면은 프로그램 런처이며, 앞으로 같은 앱에 다른 AI 업무 프로그램을 계속 추가할 수 있습니다.
 
@@ -196,6 +220,7 @@ CSV 내보내기는 `=`, `+`, `-`, `@`, 탭, 캐리지 리턴으로 시작하는
 ## 문서
 
 - [상품 후기 분석 Tauri 앱 PRD](./docs/260722-1612%20-%20LangChain%20후기%20분석%20Tauri%20앱%20PRD/LangChain%20후기%20분석%20Tauri%20앱%20PRD.md)
+- [LangChain RAG 사내 지식 검색 MVP PRD](./docs/260723-1508%20-%20LangChain%20RAG%20실무형%20지식%20업무%20지원%20PRD/LangChain%20RAG%20실무형%20지식%20업무%20지원%20PRD.md)
 - [구현 계획](./docs/260722-1728%20-%20후기%20분석%20Tauri%20앱%20구현%20계획/후기%20분석%20Tauri%20앱%20구현%20계획.md)
 - [디자인 기준](./DESIGN.md)
 - [환경 설정](./SETUP.md)
